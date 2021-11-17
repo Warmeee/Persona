@@ -10,7 +10,9 @@ class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: Column(children: [
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
           Container(
               padding: EdgeInsets.all(0),
               height: 250,

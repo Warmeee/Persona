@@ -37,7 +37,7 @@ class MoodWidget extends StatelessWidget {
                         height: 15,
                       ),
                       Container(
-                          height: 246,
+                          height: 230,
                           child: VerticalBarLabelChart.withSampleData())
                     ]))));
   }
