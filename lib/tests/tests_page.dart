@@ -7,7 +7,7 @@ class Tests extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
+    return Material(child:Column(children: [
       SizedBox(height: 30),
       Row(
         children: [
@@ -22,6 +22,6 @@ class Tests extends StatelessWidget {
           TestCard.createSixteenPf(context)
         ],
       )
-    ]);
+    ]));
   }
 }

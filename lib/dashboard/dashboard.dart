@@ -9,7 +9,7 @@ class Dashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Material(child:Container(
         child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -28,6 +28,6 @@ class Dashboard extends StatelessWidget {
                     TraitWidget.createMyersTraits()
                   ])),
           MoodWidget()
-    ]));
+    ])));
   }
 }

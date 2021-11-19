@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:persona_application/settings/settings_page.dart';
-import 'package:persona_application/tests/test_page.dart';
+import 'package:persona_application/tests/tests_page.dart';
 import 'package:persona_application/widgets/app_bar.dart';
 
 import '../dashboard/dashboard.dart';

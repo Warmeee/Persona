@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:persona_application/tests/survey_kit.dart';
+import 'package:persona_application/tests/test_description.dart';
 import 'package:survey_kit/survey_kit.dart';
 
 class TestCardDesign extends StatelessWidget {
@@ -36,13 +37,20 @@ class TestCardDesign extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 5),
-                Container(
-                    height: 100,
-                    width: 140,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.0),
-                        color: Colors.white,
-                        image: this.image)),
+                GestureDetector(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return TestInfo();
+                      }));
+                    },
+                    child: Container(
+                        height: 100,
+                        width: 140,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10.0),
+                            color: Colors.white,
+                            image: this.image))),
                 SizedBox(height: 5),
                 Expanded(
                     child: GestureDetector(

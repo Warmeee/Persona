@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:multi_charts/multi_charts.dart';
+import 'package:persona_application/dashboard/traits_description.dart';
 
 class TraitWidget extends StatelessWidget {
   TraitWidget(
@@ -61,33 +62,43 @@ class TraitWidget extends StatelessWidget {
             elevation: 7,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
-            child: Container(
-                alignment: Alignment.center,
-                height: 260,
-                width: 335,
-                padding: EdgeInsets.fromLTRB(8, 5, 0, 15),
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            SizedBox(width: 5),
-                            Text(this.title,
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 18))
-                          ]),
-                      SizedBox(height: 5),
-                      RadarChart(
-                        maxValue: 10,
+            child: GestureDetector(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return TraitInfo(
+                        title: this.title,
                         values: this.values,
-                        labels: this.labels,
-                        labelWidth: 100,
-                        textScaleFactor: 0.065,
-                        fillColor: Colors.green,
-                        maxHeight: 170,
-                        maxWidth: 170,
-                      ),
-                    ]))));
+                        labels: this.labels);
+                  }));
+                },
+                child: Container(
+                    alignment: Alignment.center,
+                    height: 260,
+                    width: 335,
+                    padding: EdgeInsets.fromLTRB(8, 5, 0, 15),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                SizedBox(width: 5),
+                                Text(this.title,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18))
+                              ]),
+                          SizedBox(height: 5),
+                          RadarChart(
+                            maxValue: 10,
+                            values: this.values,
+                            labels: this.labels,
+                            labelWidth: 100,
+                            textScaleFactor: 0.065,
+                            fillColor: Colors.green,
+                            maxHeight: 170,
+                            maxWidth: 170,
+                          ),
+                        ])))));
   }
 }
