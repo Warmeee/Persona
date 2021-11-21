@@ -24,7 +24,7 @@ class Dashboard extends StatelessWidget {
                   children: [
                     TraitWidget.createBigFiveTraits(),
                     TraitWidget.createMyersTraits(),
-                    TraitWidget.createBigFiveTraits(),
+                    TraitWidget.createSixteenPfTraits(),
                     TraitWidget.createMyersTraits()
                   ])),
           MoodWidget()

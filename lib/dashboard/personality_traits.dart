@@ -53,6 +53,44 @@ class TraitWidget extends StatelessWidget {
     ]);
   }
 
+  factory TraitWidget.createSixteenPfTraits() {
+    return TraitWidget(title: "Big 5 Personality Traits", values: [
+      6,
+      4,
+      6,
+      8,
+      2,
+      4,
+      8,
+      4,
+      7,
+      9,
+      1,
+      5,
+      6,
+      3,
+      8,
+      5
+    ], labels: [
+      "Warm",
+      "Thinker",
+      "Stable",
+      "Dominant",
+      "Enthusiastic",
+      "Conscientious",
+      "Bold",
+      "Tender",
+      "Suspicious",
+      "Imaginative",
+      "Shrewd",
+      "Apprehensive",
+      "Experimenting",
+      "Self-Sufficient",
+      "Controlled",
+      "Tense"
+    ]);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
