@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:survey_kit/survey_kit.dart';
 
-class MySurveyKit extends SurveyKit {
-  MySurveyKit(BuildContext context)
+class SurveyKitFactory extends SurveyKit {
+  SurveyKitFactory(BuildContext context)
       : super(
             task: getOrderedTask(),
             themeData: getThemeData(context),
@@ -11,17 +11,17 @@ class MySurveyKit extends SurveyKit {
               print(result.results);
             });
 
-  factory MySurveyKit.createBigFiveSurvey(BuildContext context) {
-    return MySurveyKit(context);
+  factory SurveyKitFactory.createBigFiveSurvey(BuildContext context) {
+    return SurveyKitFactory(context);
   }
-  factory MySurveyKit.createMyersSurvey(BuildContext context) {
-    return MySurveyKit(context);
+  factory SurveyKitFactory.createMyersSurvey(BuildContext context) {
+    return SurveyKitFactory(context);
   }
-  factory MySurveyKit.createRorschachSurvey(BuildContext context) {
-    return MySurveyKit(context);
+  factory SurveyKitFactory.createRorschachSurvey(BuildContext context) {
+    return SurveyKitFactory(context);
   }
-  factory MySurveyKit.createSixTeenPfSurvey(BuildContext context) {
-    return MySurveyKit(context);
+  factory SurveyKitFactory.createSixTeenPfSurvey(BuildContext context) {
+    return SurveyKitFactory(context);
   }
 
   static Task getOrderedTask() {

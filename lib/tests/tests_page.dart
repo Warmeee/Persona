@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:persona_application/tests/test_card.dart';
+import 'package:persona_application/tests/test_card_factory.dart';
 
 class Tests extends StatelessWidget {
   const Tests({Key? key}) : super(key: key);
@@ -11,15 +11,15 @@ class Tests extends StatelessWidget {
       SizedBox(height: 30),
       Row(
         children: [
-          TestCard.createBigFive(context),
-          TestCard.createMyersBriggs(context)
+          TestCardFactory.createBigFive(context),
+          TestCardFactory.createMyersBriggs(context)
         ],
       ),
       SizedBox(height: 20),
       Row(
         children: [
-          TestCard.createRorschach(context),
-          TestCard.createSixteenPf(context)
+          TestCardFactory.createRorschach(context),
+          TestCardFactory.createSixteenPf(context)
         ],
       )
     ]));

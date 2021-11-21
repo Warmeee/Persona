@@ -2,17 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:persona_application/dashboard/mood_tracker.dart';
-import 'package:persona_application/dashboard/personality_traits.dart';
+import 'package:persona_application/dashboard/trait_widget_factory.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Material(child:Container(
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
+    return Material(
+        child: Container(
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
           Container(
               padding: EdgeInsets.all(0),
               height: 250,
@@ -22,12 +23,12 @@ class Dashboard extends StatelessWidget {
                   physics: PageScrollPhysics(),
                   scrollDirection: Axis.horizontal,
                   children: [
-                    TraitWidget.createBigFiveTraits(),
-                    TraitWidget.createMyersTraits(),
-                    TraitWidget.createSixteenPfTraits(),
-                    TraitWidget.createMyersTraits()
+                    TraitWidgetFactory.createBigFiveTraits(),
+                    TraitWidgetFactory.createMyersTraits(),
+                    TraitWidgetFactory.createSixteenPfTraits(),
+                    TraitWidgetFactory.createMyersTraits()
                   ])),
           MoodWidget()
-    ])));
+        ])));
   }
 }
