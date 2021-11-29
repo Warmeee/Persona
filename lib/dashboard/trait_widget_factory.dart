@@ -80,5 +80,4 @@ abstract class TraitWidgetFactory extends StatelessWidget {
       "Tense"
     ]);
   }
-
 }

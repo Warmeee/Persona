@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "632354545388",
+    "project_id": "persona-bb289",
+    "storage_bucket": "persona-bb289.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:632354545388:android:33343887cad128b55c0fc9",
+        "android_client_info": {
+          "package_name": "co.perso.persona_application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "632354545388-3jgnt4qbjp0lus7lh9r9kodq2clotckn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA90iYpSs8ALO6lxFInFCs56K_gs_JYbEk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "632354545388-3jgnt4qbjp0lus7lh9r9kodq2clotckn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

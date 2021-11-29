@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:persona_application/codex/survey_kit.dart';
 
 class TestDescription extends StatelessWidget {
-  const TestDescription({Key? key, required this.title, required this.image}) : super(key: key);
+  const TestDescription({Key? key, required this.title, required this.image})
+      : super(key: key);
 
   final String title;
   final DecorationImage image;
@@ -16,14 +18,32 @@ class TestDescription extends StatelessWidget {
               children: [
                 SizedBox(height: 30),
                 Container(
-                    height: 260,
-                    decoration: BoxDecoration(
-                        image: this.image)),
+                    height: 260, decoration: BoxDecoration(image: this.image)),
                 SizedBox(height: 10),
-                Text(this.title,
-                    style:
-                    TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.left),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text(this.title,
+                        style: TextStyle(
+                            fontSize: 19, fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.left),
+                    ElevatedButton(
+                      child: Text("Start"),
+                      style: ButtonStyle(
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                      ))),
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return SurveyKitFactory.createBigFiveSurvey(context);
+                        }));
+                      },
+                    )
+                  ],
+                ),
                 SizedBox(height: 20),
                 Expanded(
                     child: SingleChildScrollView(
