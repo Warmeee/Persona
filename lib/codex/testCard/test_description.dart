@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:persona_application/codex/survey_kit.dart';
+import 'package:persona_application/codex/survey_kit_factory.dart';
 
 class TestDescription extends StatelessWidget {
   const TestDescription({Key? key, required this.title, required this.image})

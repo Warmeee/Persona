@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:persona_application/codex/survey_kit.dart';
-import 'package:persona_application/codex/test_card.dart';
-import 'package:persona_application/codex/test_card_factory.dart';
+import 'package:persona_application/codex/testCard/test_card_factory.dart';
 
 import 'health_card.dart';
 

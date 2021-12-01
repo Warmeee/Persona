@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:persona_application/codex/survey_kit.dart';
-import 'package:persona_application/codex/test_card.dart';
+import 'package:persona_application/codex/testCard/test_card.dart';
 
 abstract class TestCardFactory extends StatelessWidget {
   const TestCardFactory({Key? key}) : super(key: key);

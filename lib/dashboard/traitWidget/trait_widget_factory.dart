@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:persona_application/dashboard/trait_widget.dart';
+import 'package:persona_application/dashboard/traitWidget/trait_widget.dart';
 
 abstract class TraitWidgetFactory extends StatelessWidget {
   TraitWidgetFactory({Key? key}) : super(key: key);

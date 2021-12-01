@@ -25,13 +25,13 @@ class HealthDescription extends StatelessWidget {
                 SizedBox(height: 20),
                 Expanded(
                     child: SingleChildScrollView(
-                        child: Text(resolveDescription(this.title),
+                        child: Text(getDescription(this.title),
                             style: TextStyle(fontSize: 16))))
               ],
             )));
   }
 
-  static String resolveDescription(String title) {
+  static String getDescription(String title) {
     switch (title) {
       case "Anxiety":
         return anxiety;

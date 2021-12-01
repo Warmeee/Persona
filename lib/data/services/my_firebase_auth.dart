@@ -4,22 +4,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:persona_application/widgets/home_page.dart';
 
-import '../my_shared_preferences.dart';
-
 class MyFireBaseAuth {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   Future<void> createUserEmailandPassword(String email, String password,
-      String fullName, BuildContext context) async {
+      String nickName, BuildContext context) async {
     try {
-      UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
-          email: email, password: password);
-      //MySharedPreferences().addSharedToken(user.user!.uid);
+      UserCredential userCredential = await _auth
+          .createUserWithEmailAndPassword(email: email, password: password);
       _firestore
-          .collection('Person')
+          .collection('User')
           .doc(userCredential.user!.uid)
-          .set({'fullName': fullName, 'email': email, 'password': password});
+          .set({'nickname': nickName, 'email': email, 'password': password});
       Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (context) => MyHomePage()));
     } on FirebaseAuthException catch (error) {
@@ -43,12 +40,9 @@ class MyFireBaseAuth {
   Future<void> signInEmailandPassword(
       String email, String password, BuildContext context) async {
     try {
-      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
-          email: email, password: password);
-      //MySharedPreferences().addSharedToken(user.user!.uid);
-      Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (context) => MyHomePage()),
-          (Route<dynamic> route) => false);
+      await _auth.signInWithEmailAndPassword(email: email, password: password);
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => MyHomePage()));
     } on FirebaseAuthException catch (error) {
       showDialog(
         context: context,

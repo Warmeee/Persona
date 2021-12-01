@@ -106,7 +106,7 @@ class LoginTextFieldPass extends StatelessWidget {
       ),
       validator: (value) {
         if (value!.trim().isEmpty || value.trim() == "") {
-          return 'Please enter some text';
+          return 'Please enter a password';
         } else if (value.trim().length < 6) {
           return 'Password should be at least 6 characters';
         }

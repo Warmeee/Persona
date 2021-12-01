@@ -13,14 +13,12 @@ class SignUpWidget extends StatefulWidget {
 
 class _SignUpWidgetState extends State<SignUpWidget> {
   TextEditingController fullNameController = TextEditingController();
-
   TextEditingController emailController = TextEditingController();
-
   TextEditingController passController = TextEditingController();
-  bool isPass = true;
-  bool isLoading = false;
 
   final _formKey = GlobalKey<FormState>();
+  bool isLoading = false;
+  bool isPass = true;
 
   @override
   void dispose() {
@@ -55,7 +53,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             LoginTextField(
-              name: 'Full Name',
+              name: 'Nickname',
               keyType: TextInputType.name,
               icons: CupertinoIcons.person,
               valueController: fullNameController,

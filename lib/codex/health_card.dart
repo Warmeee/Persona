@@ -51,22 +51,16 @@ class HealthCard extends StatelessWidget {
     switch (title) {
       case "Anxiety":
         return DecorationImage(
-            image: NetworkImage("https://www.incimages.com/uploaded_files/"
-                "image/1920x1080/shutterstock_"
-                "619960997_370864.jpg"));
+            image: AssetImage('assets/images/anxiety.jpg'));
       case "Depression":
         return DecorationImage(
-            image: NetworkImage("https://cdn.dnaindia.com/sites/default/files/"
-                "styles/full/public/2020/11/04/935552-depression-women.jpg"));
+            image: AssetImage('assets/images/depression.jpg'));
       case "Bipolarity":
         return DecorationImage(
-            image: NetworkImage("https://health.clevelandclinic.org/wp-content"
-                "/uploads/sites/3/2018/03/bipolar-disorder.png"));
+            image: AssetImage('assets/images/bipolarity.jpg'));
       default:
         return DecorationImage(
-            image: NetworkImage("https://www.incimages.com/uploaded_files/"
-                "image/1920x1080/shutterstock_"
-                "619960997_370864.jpg"));
+            image: AssetImage('assets/images/anxiety.jpg'));
     }
   }
 }
