@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:persona_application/data/services/my_firebase_auth.dart';
+import 'package:provider/src/provider.dart';
 
 import 'login_text_field.dart';
 
@@ -93,7 +94,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                   setState(() {
                     isLoading = true;
                   });
-                  await MyFireBaseAuth().createUserEmailandPassword(
+                  context.read<AuthenticationService>().createUserEmailandPassword(
                       emailController.text.trim(),
                       passController.text,
                       nickNameController.text.trim(),

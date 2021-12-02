@@ -1,10 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:persona_application/data/sign_in_up/sign_in.dart';
-import 'home_page.dart';
+import 'package:persona_application/widgets/home_page.dart';
 
 class LandingPage extends StatelessWidget {
-  Stream<User?> get _authStateChanges => FirebaseAuth.instance.idTokenChanges();
+  final Stream<User?> _authStateChanges =
+  FirebaseAuth.instance.idTokenChanges();
 
   @override
   Widget build(BuildContext context) {

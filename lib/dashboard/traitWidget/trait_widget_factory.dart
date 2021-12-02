@@ -8,7 +8,7 @@ abstract class TraitWidgetFactory extends StatelessWidget {
   factory TraitWidgetFactory.createBigFiveTraits(List<double> values) {
     return TraitWidget(
         title: "Big 5 Personality Traits",
-        values: values.isEmpty ? [1, 2, 3, 4, 5] : values,
+        values: values.isEmpty ? [0,0,0,0,0] : values,
         labels: [
           "Openness",
           "Conscientiousness",
@@ -21,7 +21,7 @@ abstract class TraitWidgetFactory extends StatelessWidget {
   factory TraitWidgetFactory.createMyersTraits(List<double> values) {
     return TraitWidget(
         title: "Myers-Briggs Personality Traits",
-        values: values.isEmpty ? [3, 2, 3, 4, 2, 3.5, 2, 4.5] : values,
+        values: values.isEmpty ? [0,0,0,0,0,0,0,0] : values,
         labels: [
           "Extrovert",
           "Sensing",

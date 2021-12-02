@@ -29,7 +29,7 @@ class SurveyKitFactory extends SurveyKit {
       CollectionReference tests =
           FirebaseFirestore.instance.collection("Tests");
       Map<String, Object> test = Map();
-      List<int> results = [];
+      List<double> results = [];
       List<double> scores = [];
       TextChoice answer;
 
@@ -42,7 +42,7 @@ class SurveyKitFactory extends SurveyKit {
 
             answer = questRes.result;
             print("\nValue: " + answer.value);
-            results.add(int.parse(answer.value));
+            results.add(double.parse(answer.value));
           }
         }
       }
@@ -50,7 +50,7 @@ class SurveyKitFactory extends SurveyKit {
       //SCORING
       int counter = 1;
       double average = 0;
-      for (int value in results) {
+      for (double value in results) {
         average += value;
         print("\nAverage: " + average.toString());
         if (counter % 10 == 0) {
@@ -99,7 +99,7 @@ class SurveyKitFactory extends SurveyKit {
     List<TextChoice> choices = [
       TextChoice(text: 'Strongly Disagree', value: '0'),
       TextChoice(text: 'Disagree', value: '1'),
-      TextChoice(text: 'Neutral', value: '2'),
+      TextChoice(text: 'Neutral', value: '5'),
       TextChoice(text: 'Agree', value: '3'),
       TextChoice(text: 'Strongly Agree', value: '4')
     ];
@@ -113,26 +113,26 @@ class SurveyKitFactory extends SurveyKit {
         ),
         QuestionStep(
           isOptional: false,
-          title: 'Conscientiousness',
+          title: 'Big Five Personalities',
           text: '1) I try not to draw attention to myself ',
           answerFormat: SingleChoiceAnswerFormat(
               textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
         QuestionStep(
-          title: 'Conscientiousness',
+          title: 'Big Five Personalities',
           text: '2) I lose my belongings ',
           answerFormat: SingleChoiceAnswerFormat(
               textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
         QuestionStep(
           isOptional: true,
-          title: 'Conscientiousness',
+          title: 'Big Five Personalities',
           text: '3) I make sure my work is finished on time',
           answerFormat: SingleChoiceAnswerFormat(
               textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
         CompletionStep(
           stepIdentifier: StepIdentifier(id: '321'),
@@ -148,424 +148,429 @@ class SurveyKitFactory extends SurveyKit {
   static Task getBigFiveTask() {
     List<TextChoice> choices = [
       TextChoice(text: 'Strongly Disagree', value: '0'),
-      TextChoice(text: 'Disagree', value: '1'),
-      TextChoice(text: 'Neutral', value: '2'),
-      TextChoice(text: 'Agree', value: '3'),
-      TextChoice(text: 'Strongly Agree', value: '4')
+      TextChoice(text: 'Disagree', value: '2.5'),
+      TextChoice(text: 'Neutral', value: '5'),
+      TextChoice(text: 'Agree', value: '7.5'),
+      TextChoice(text: 'Strongly Agree', value: '10')
+    ];
+    //keyed answers
+    List<TextChoice> revChoices = [
+      TextChoice(text: 'Strongly Disagree', value: '10'),
+      TextChoice(text: 'Disagree', value: '7.5'),
+      TextChoice(text: 'Neutral', value: '5'),
+      TextChoice(text: 'Agree', value: '2.5'),
+      TextChoice(text: 'Strongly Agree', value: '0')
     ];
     var task = OrderedTask(
       id: TaskIdentifier(),
       steps: [
         InstructionStep(
-          title: 'Welcome to the Persona Personality Survey',
-          text: 'Get ready for the questions!',
-          buttonText: 'Let\'s go!',
+            title: 'Welcome to the Big Five Personalities Test!',
+            text:
+                'This test consists of 50 questions and takes approximately 10 minutes, please try to concentrate to achieve the most accurate results.',
+            buttonText: "Let's go!"),
+        QuestionStep(
+          title: 'Big Five Personalities',
+          text: '1) I have a vivid imagination.',
+          answerFormat: SingleChoiceAnswerFormat(
+              textChoices: choices,
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
         QuestionStep(
-          title: 'Conscientiousness',
-          text: '1) I try not to draw attention to myself ',
+          title: 'Big Five Personalities',
+          text: '2) I am not interested in abstract ideas.',
           answerFormat: SingleChoiceAnswerFormat(
-              textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              textChoices: revChoices,
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
         QuestionStep(
-          title: 'Conscientiousness',
-          text: '2) I lose my belongings ',
+          title: 'Big Five Personalities',
+          text: '3) I like trying out new hobbies.',
           answerFormat: SingleChoiceAnswerFormat(
               textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
         QuestionStep(
-          title: 'Conscientiousness',
-          text: '3) I make sure my work is finished on time',
+          title: 'Big Five Personalities',
+          text: '4) I spend time seeking out new experiences.',
           answerFormat: SingleChoiceAnswerFormat(
               textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
         QuestionStep(
-          title: 'Conscientiousness',
-          text: '4) I make plans and stick to them',
+          title: 'Big Five Personalities',
+          text: '5) I like thinking about the mysteries of the universe.',
           answerFormat: SingleChoiceAnswerFormat(
               textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
         QuestionStep(
-          title: 'Conscientiousness',
-          text: '5) I rarely notice my emotional reactions.',
+          title: 'Big Five Personalities',
+          text: '6) I am full of new ideas.',
           answerFormat: SingleChoiceAnswerFormat(
               textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
         QuestionStep(
-          title: 'Conscientiousness',
-          text: '6) I waste my time in leisure things',
+          title: 'Big Five Personalities',
+          text: '7) I always look at the bright side of life.',
           answerFormat: SingleChoiceAnswerFormat(
               textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
         QuestionStep(
-          title: 'Conscientiousness',
-          text: '7) I feel that I’m unable to deal with things.',
+          title: 'Big Five Personalities',
+          text: '8) I enjoy the wild life of fantasy.',
           answerFormat: SingleChoiceAnswerFormat(
               textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
         QuestionStep(
-          title: 'Conscientiousness',
-          text: '8) I know how to get things done',
+          title: 'Big Five Personalities',
+          text: '9) I see beauty in things that others might not notice.',
           answerFormat: SingleChoiceAnswerFormat(
               textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
         QuestionStep(
-          title: 'Conscientiousness',
-          text: '9) I often Break my promises.',
+          title: 'Big Five Personalities',
+          text: '10) I am attached to conventional ways.',
           answerFormat: SingleChoiceAnswerFormat(
               textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
+        ),
+        QuestionStep(
+          title: 'Big Five Personalities',
+          text: '11) I try not to draw attention to myself ',
+          answerFormat: SingleChoiceAnswerFormat(
+              textChoices: revChoices,
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
         QuestionStep(
-          title: 'Conscientiousness',
-          text: '10) Put little time and effort into my work',
+          title: 'Big Five Personalities',
+          text: '12) I often lose my belongings ',
+          answerFormat: SingleChoiceAnswerFormat(
+              textChoices: revChoices,
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
+        ),
+
+        QuestionStep(
+          title: 'Big Five Personalities',
+          text: '13) I make sure my work is finished on time',
           answerFormat: SingleChoiceAnswerFormat(
               textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
+        ),
+
+        QuestionStep(
+          title: 'Big Five Personalities',
+          text: '14) I make plans and stick to them.',
+          answerFormat: SingleChoiceAnswerFormat(
+              textChoices: choices,
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
+        ),
+
+        QuestionStep(
+          title: 'Big Five Personalities',
+          text: '15) I rarely notice my emotional reactions.',
+          answerFormat: SingleChoiceAnswerFormat(
+              textChoices: choices,
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
+        ),
+
+        QuestionStep(
+          title: 'Big Five Personalities',
+          text: '16) I waste my time in leisure things',
+          answerFormat: SingleChoiceAnswerFormat(
+              textChoices: revChoices,
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
+        ),
+
+        QuestionStep(
+          title: 'Big Five Personalities',
+          text: '17) I feel that I’m unable to deal with things.',
+          answerFormat: SingleChoiceAnswerFormat(
+              textChoices: revChoices,
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
+        ),
+
+        QuestionStep(
+          title: 'Big Five Personalities',
+          text: '18) I know how to get things done',
+          answerFormat: SingleChoiceAnswerFormat(
+              textChoices: choices,
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
+        ),
+
+        QuestionStep(
+          title: 'Big Five Personalities',
+          text: '19) I often break my promises.',
+          answerFormat: SingleChoiceAnswerFormat(
+              textChoices: choices,
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
+        ),
+
+        QuestionStep(
+          title: 'Big Five Personalities',
+          text: '20) Put little time and effort into my work',
+          answerFormat: SingleChoiceAnswerFormat(
+              textChoices: revChoices,
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
         //
 
-        //Experince
+        //Extroversion
         QuestionStep(
-          title: 'Open to experience',
-          text: '11) I have a vivid imagination.',
+          title: 'Big Five Personalities',
+          text: '21) I enjoy attending a large party.',
           answerFormat: SingleChoiceAnswerFormat(
               textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
         QuestionStep(
-          title: 'Open to experience',
-          text: '12) I think about why people do the things they do.',
+          title: 'Big Five Personalities',
+          text: '22) Being around lots of people energizes me.',
           answerFormat: SingleChoiceAnswerFormat(
               textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
         QuestionStep(
-          title: 'Open to experience',
-          text: '13) I like trying out new hobbies.',
+          title: 'Big Five Personalities',
+          text: '23) It is easy for me to talk to strangers.',
           answerFormat: SingleChoiceAnswerFormat(
               textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
         QuestionStep(
-          title: 'Open to experience',
-          text: '14) I spend time seeking out new experiences.',
+          title: 'Big Five Personalities',
+          text: '24) I avoid being alone.',
           answerFormat: SingleChoiceAnswerFormat(
               textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
         QuestionStep(
-          title: 'Open to experience',
-          text: '15) I like thinking about the mysteries of the universe.',
+          title: 'Big Five Personalities',
+          text: '25) I seek adventure.',
           answerFormat: SingleChoiceAnswerFormat(
               textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
         QuestionStep(
-          title: 'Open to experience',
-          text: '16) I am full of new ideas.',
+          title: 'Big Five Personalities',
+          text: '26) Avoid contact with others.',
           answerFormat: SingleChoiceAnswerFormat(
-              textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              textChoices: revChoices,
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
         QuestionStep(
-          title: 'Open to experience',
-          text: '17) I always look at the bright side of life.',
+          title: 'Big Five Personalities',
+          text: '27) I find it difficult to approach others.',
           answerFormat: SingleChoiceAnswerFormat(
-              textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              textChoices: revChoices,
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
         QuestionStep(
-          title: 'Open to experience',
-          text: '18) I enjoy wild life of fantasy.',
+          title: 'Big Five Personalities',
+          text: '28) Talk to a lot of different people at parties.',
           answerFormat: SingleChoiceAnswerFormat(
               textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
         QuestionStep(
-          title: 'Open to experience',
-          text: '19) I see beauty in things that other might not notice.',
+          title: 'Big Five Personalities',
+          text: '29) I spend most of my money on traveling.',
           answerFormat: SingleChoiceAnswerFormat(
               textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
         QuestionStep(
-          title: 'Open to experience',
-          text: '20) I am attach to conventional ways.',
+          title: 'Big Five Personalities',
+          text: '30) I can make a public speech.',
           answerFormat: SingleChoiceAnswerFormat(
               textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
-        // Agree
+        // Agreeableness
         QuestionStep(
-          title: 'Agreeableness',
-          text: '21) I am concerned about others.',
+          title: 'Big Five Personalities',
+          text: '31) I am concerned about others.',
           answerFormat: SingleChoiceAnswerFormat(
               textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
-        ),
-
-        QuestionStep(
-          title: 'Agreeableness',
-          text: '22) It is important to me to be of service to others.',
-          answerFormat: SingleChoiceAnswerFormat(
-              textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
         QuestionStep(
-          title: 'Agreeableness',
-          text: '23) I sympathize with the homeless.',
+          title: 'Big Five Personalities',
+          text: '32) It is important to me to be of service to others.',
           answerFormat: SingleChoiceAnswerFormat(
               textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
         QuestionStep(
-          title: 'Agreeableness',
-          text: '24) I am helpful to the people around me.',
+          title: 'Big Five Personalities',
+          text: '33) I sympathize with the homeless.',
           answerFormat: SingleChoiceAnswerFormat(
               textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
         QuestionStep(
-          title: 'Agreeableness',
-          text: '25)Take advantage of others. ',
+          title: 'Big Five Personalities',
+          text: '34) I am helpful to the people around me.',
           answerFormat: SingleChoiceAnswerFormat(
               textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
         QuestionStep(
-          title: 'Agreeableness',
-          text: '26)Am not interested in other peoples problems',
+          title: 'Big Five Personalities',
+          text: '35) Take advantage of others. ',
           answerFormat: SingleChoiceAnswerFormat(
-              textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              textChoices: revChoices,
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
         QuestionStep(
-          title: 'Agreeableness',
-          text: '27)Try not to think about the needy. ',
+          title: 'Big Five Personalities',
+          text: '36) Am not interested in other peoples problems',
           answerFormat: SingleChoiceAnswerFormat(
-              textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              textChoices: revChoices,
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
         QuestionStep(
-          title: 'Agreeableness',
-          text: '28)Feel sympathy for those who are worse off than myself.',
+          title: 'Big Five Personalities',
+          text: '37) Try not to think about the needy. ',
           answerFormat: SingleChoiceAnswerFormat(
-              textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              textChoices: revChoices,
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
         QuestionStep(
-          title: 'Agreeableness',
-          text: '29) I insult people.',
+          title: 'Big Five Personalities',
+          text: '38) Feel sympathy for those who are worse off than myself.',
           answerFormat: SingleChoiceAnswerFormat(
               textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
         QuestionStep(
-          title: 'Agreeableness',
-          text: '30) I question the wisdom of my elders.',
+          title: 'Big Five Personalities',
+          text: '39) I insult people.',
           answerFormat: SingleChoiceAnswerFormat(
-              textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
-        ),
-
-        //Ext
-        QuestionStep(
-          title: 'Extroversion',
-          text: '31) I would enjoy attending a large party.',
-          answerFormat: SingleChoiceAnswerFormat(
-              textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              textChoices: revChoices,
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
         QuestionStep(
-          title: 'Extroversion',
-          text: '32)Being around lots of people energizes me.',
+          title: 'Big Five Personalities',
+          text: '40) I question the wisdom of my elders.',
           answerFormat: SingleChoiceAnswerFormat(
-              textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              textChoices: revChoices,
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
+        //Negative emotionality 
         QuestionStep(
-          title: 'Extroversion',
-          text: '33) It is easy for me to talk to strangers.',
-          answerFormat: SingleChoiceAnswerFormat(
-              textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
-        ),
-
-        QuestionStep(
-          title: 'Extroversion',
-          text: '34) I avoid being alone.',
-          answerFormat: SingleChoiceAnswerFormat(
-              textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
-        ),
-
-        QuestionStep(
-          title: 'Extroversion',
-          text: '35) I seek adventure.',
-          answerFormat: SingleChoiceAnswerFormat(
-              textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
-        ),
-
-        QuestionStep(
-          title: 'Extroversion',
-          text: '36) Avoid contacts with others.',
-          answerFormat: SingleChoiceAnswerFormat(
-              textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
-        ),
-
-        QuestionStep(
-          title: 'Extroversion',
-          text: '37) I find it difficult to approach others.',
-          answerFormat: SingleChoiceAnswerFormat(
-              textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
-        ),
-
-        QuestionStep(
-          title: 'Extroversion',
-          text: '38) Talk to a lot of different people at parties.',
-          answerFormat: SingleChoiceAnswerFormat(
-              textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
-        ),
-
-        QuestionStep(
-          title: 'Extroversion',
-          text: '39) I spend most of money on travelling.',
-          answerFormat: SingleChoiceAnswerFormat(
-              textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
-        ),
-
-        QuestionStep(
-          title: 'Extroversion',
-          text: '40) I can make a speech publicly.',
-          answerFormat: SingleChoiceAnswerFormat(
-              textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
-        ),
-
-        //Negative
-        QuestionStep(
-          title: 'Negative emotionality',
+          title: 'Big Five Personalities',
           text: '41) I enjoy being there for people when they are feeling sad',
           answerFormat: SingleChoiceAnswerFormat(
               textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
         QuestionStep(
-          title: 'Negative emotionality',
+          title: 'Big Five Personalities',
           text: '42) I believe people should be punished for their mistakes',
           answerFormat: SingleChoiceAnswerFormat(
               textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
         QuestionStep(
-          title: 'Negative emotionality',
+          title: 'Big Five Personalities',
           text:
               '43) I forgive others’ mistakes, even when they harm me personally.',
           answerFormat: SingleChoiceAnswerFormat(
-              textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              textChoices: revChoices,
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
         QuestionStep(
-          title: 'Negative emotionality',
-          text: '44)Wise people make me uncomfortable',
+          title: 'Big Five Personalities',
+          text: '44) Wise people make me uncomfortable',
           answerFormat: SingleChoiceAnswerFormat(
               textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
         QuestionStep(
-          title: 'Negative emotionality',
-          text: '45) I lose my tamper more often',
+          title: 'Big Five Personalities',
+          text: '45) I am relaxed most of the time',
           answerFormat: SingleChoiceAnswerFormat(
-              textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              textChoices: revChoices,
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
         QuestionStep(
-          title: 'Negative emotionality',
+          title: 'Big Five Personalities',
           text: '46) I cheat to get ahead',
           answerFormat: SingleChoiceAnswerFormat(
               textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
         QuestionStep(
-          title: 'Negative emotionality',
+          title: 'Big Five Personalities',
           text: '47) I yell and insult people',
           answerFormat: SingleChoiceAnswerFormat(
               textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
         QuestionStep(
-          title: 'Negative emotionality',
+          title: 'Big Five Personalities',
           text: '48) I enjoy being reckless',
           answerFormat: SingleChoiceAnswerFormat(
               textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
         QuestionStep(
-          title: 'Negative emotionality',
+          title: 'Big Five Personalities',
           text: '49) I fear for worst',
           answerFormat: SingleChoiceAnswerFormat(
               textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
         QuestionStep(
-          title: 'Negative emotionality',
+          title: 'Big Five Personalities',
           text: '50) I dislike myself',
           answerFormat: SingleChoiceAnswerFormat(
               textChoices: choices,
-              defaultSelection: TextChoice(text: 'Neutral', value: '2')),
+              defaultSelection: TextChoice(text: 'Neutral', value: '5')),
         ),
 
         CompletionStep(

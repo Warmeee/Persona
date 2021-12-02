@@ -53,7 +53,7 @@ class TraitWidget extends StatelessWidget implements TraitWidgetFactory {
                               ]),
                           SizedBox(height: 5),
                           RadarChart(
-                            maxValue: 5,
+                            maxValue: 10,
                             values: this.values,
                             labels: this.labels,
                             labelWidth: 100,

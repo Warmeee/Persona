@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HealthDescription extends StatelessWidget {
   const HealthDescription({Key? key, required this.title, required this.image})
@@ -26,7 +27,7 @@ class HealthDescription extends StatelessWidget {
                 Expanded(
                     child: SingleChildScrollView(
                         child: Text(getDescription(this.title),
-                            style: TextStyle(fontSize: 16))))
+                            style: GoogleFonts.roboto(fontSize: 16))))
               ],
             )));
   }

@@ -2,13 +2,24 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:persona_application/widgets/landing_page.dart';
+import 'package:provider/provider.dart';
 
-import 'widgets/landing_page.dart';
+import 'data/services/my_firebase_auth.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(App());
+  runApp(MultiProvider(providers: [
+    Provider<AuthenticationService>(
+      create: (_) => AuthenticationService(),
+    ),
+    StreamProvider(
+      create: (context) =>
+          context.read<AuthenticationService>().authStateChanges,
+      initialData: [],
+    )
+  ], child: App()));
 }
 
 /// We are using a StatefulWidget such that we only create the [Future] once,
@@ -36,13 +47,13 @@ class _AppState extends State<App> {
         if (snapshot.hasError) {
           return ErrorWidget("Error initializing FlutterFire!");
         }
-        // Once complete, show your application
         if (snapshot.connectionState == ConnectionState.done) {
           return MaterialApp(
               theme: ThemeData(primarySwatch: Colors.green),
-              home: LandingPage());
+              home: LandingPage(),
+              debugShowCheckedModeBanner: false);
         }
-        // Otherwise, show something whilst waiting for initialization to complete
+        // Otherwise, show something while waiting for initialization to complete
         return CircularProgressIndicator.adaptive();
       },
     );

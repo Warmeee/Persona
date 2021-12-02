@@ -15,6 +15,11 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
 
+  @override
+  void initState() {
+    super.initState();
+  }
+
   static List<Widget> _widgetOptions = <Widget>[
     Dashboard(),
     Codex(),
