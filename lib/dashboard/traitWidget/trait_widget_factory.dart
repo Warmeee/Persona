@@ -5,62 +5,53 @@ import 'package:persona_application/dashboard/traitWidget/trait_widget.dart';
 abstract class TraitWidgetFactory extends StatelessWidget {
   TraitWidgetFactory({Key? key}) : super(key: key);
 
-  factory TraitWidgetFactory.createBigFiveTraits() {
-    return TraitWidget(title: "Big 5 Personality Traits", values: [
-      6,
-      4,
-      6,
-      8,
-      2
-    ], labels: [
-      "Openness",
-      "Conscientiousness",
-      "Extroversion",
-      "Agreeableness",
-      "Neuroticism"
-    ]);
+  factory TraitWidgetFactory.createBigFiveTraits(List<double> values) {
+    return TraitWidget(
+        title: "Big 5 Personality Traits",
+        values: values.isEmpty ? [1, 2, 3, 4, 5] : values,
+        labels: [
+          "Openness",
+          "Conscientiousness",
+          "Extroversion",
+          "Agreeableness",
+          "Neuroticism"
+        ]);
   }
 
-  factory TraitWidgetFactory.createMyersTraits() {
-    return TraitWidget(title: "Myers-Briggs Personality Traits", values: [
-      6,
-      4,
-      6,
-      8,
-      2,
-      7,
-      4,
-      9
-    ], labels: [
-      "Extrovert",
-      "Sensing",
-      "Thinking",
-      "Judging",
-      "Introvert",
-      "Intuition",
-      "Feeling",
-      "Perception"
-    ]);
+  factory TraitWidgetFactory.createMyersTraits(List<double> values) {
+    return TraitWidget(
+        title: "Myers-Briggs Personality Traits",
+        values: values.isEmpty ? [3, 2, 3, 4, 2, 3.5, 2, 4.5] : values,
+        labels: [
+          "Extrovert",
+          "Sensing",
+          "Thinking",
+          "Judging",
+          "Introvert",
+          "Intuition",
+          "Feeling",
+          "Perception"
+        ]);
   }
 
   factory TraitWidgetFactory.createSixteenPfTraits() {
     return TraitWidget(title: "Sixteen Personality Factors", values: [
-      6,
+      3,
+      2,
+      3,
       4,
-      6,
-      8,
+      1,
       2,
       4,
-      8,
-      4,
-      7,
-      9,
+      2,
+      3.5,
+      4.5,
       1,
-      5,
-      6,
+      2.5,
       3,
-      8,
-      5
+      1.5,
+      4,
+      2.5
     ], labels: [
       "Warm",
       "Thinker",

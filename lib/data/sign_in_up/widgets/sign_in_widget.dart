@@ -57,7 +57,7 @@ class _SignInWidgetState extends State<SignInWidget> {
               valueController: emailController,
               validator: (value) {
                 if (value!.trim().isEmpty || value.trim() == "") {
-                  return 'Please enter some text';
+                  return 'Please enter your password';
                 }
                 return null;
               },

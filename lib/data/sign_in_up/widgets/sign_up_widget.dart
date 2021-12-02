@@ -12,7 +12,7 @@ class SignUpWidget extends StatefulWidget {
 }
 
 class _SignUpWidgetState extends State<SignUpWidget> {
-  TextEditingController fullNameController = TextEditingController();
+  TextEditingController nickNameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passController = TextEditingController();
 
@@ -22,7 +22,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
 
   @override
   void dispose() {
-    fullNameController.dispose();
+    nickNameController.dispose();
     passController.dispose();
     emailController.dispose();
     super.dispose();
@@ -36,7 +36,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isLoading) {
+    /*if (isLoading) {
       return Padding(
         padding:
             const EdgeInsets.only(left: 24, right: 24, top: 70, bottom: 40),
@@ -44,7 +44,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
           child: CircularProgressIndicator.adaptive(),
         ),
       );
-    }
+    }*/
     return Padding(
       padding: const EdgeInsets.only(left: 24, right: 24, top: 70, bottom: 40),
       child: Form(
@@ -56,7 +56,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
               name: 'Nickname',
               keyType: TextInputType.name,
               icons: CupertinoIcons.person,
-              valueController: fullNameController,
+              valueController: nickNameController,
               validator: (value) {
                 if (value!.trim().isEmpty || value.trim() == "") {
                   return 'Please enter some text';
@@ -96,11 +96,11 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                   await MyFireBaseAuth().createUserEmailandPassword(
                       emailController.text.trim(),
                       passController.text,
-                      fullNameController.text.trim(),
+                      nickNameController.text.trim(),
                       context);
-                  setState(() {
+                  /*setState(() {
                     isLoading = false;
-                  });
+                  });*/
                 }
               },
               style: ElevatedButton.styleFrom(

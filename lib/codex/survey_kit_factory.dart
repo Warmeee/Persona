@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:survey_kit/survey_kit.dart';
@@ -46,6 +47,7 @@ class SurveyKitFactory extends SurveyKit {
         }
       }
       test["results"] = results;
+      //SCORING
       int counter = 1;
       double average = 0;
       for (int value in results) {
@@ -57,13 +59,22 @@ class SurveyKitFactory extends SurveyKit {
         }
         counter++;
       }
-      test["scores"] = scores;
+      test["bigScores"] = scores;
       test["type"] = "BigFive";
 
+      //GET CURRENT USER
+      User? _user = FirebaseAuth.instance.currentUser;
+      tests.doc(_user!.displayName).set(test);
+
+      /*CollectionReference cr = FirebaseFirestore.instance.collection('Tests');
+      FirebaseFirestore.instance
+          .collection('Tests')
+          .doc(_user!.displayName)
+          .update(test);
       tests
           .add(test)
           .then((value) => print("Test Added"))
-          .catchError((error) => print("Failed to add test: $error"));
+          .catchError((error) => print("Failed to add test: $error"));*/
     };
   }
 

@@ -2,7 +2,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:persona_application/widgets/home_page.dart';
+
+import 'widgets/landing_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,7 +33,6 @@ class _AppState extends State<App> {
       // Initialize FlutterFire:
       future: _initialization,
       builder: (context, snapshot) {
-        // Check for errors
         if (snapshot.hasError) {
           return ErrorWidget("Error initializing FlutterFire!");
         }
@@ -40,7 +40,7 @@ class _AppState extends State<App> {
         if (snapshot.connectionState == ConnectionState.done) {
           return MaterialApp(
               theme: ThemeData(primarySwatch: Colors.green),
-              home: MyHomePage());
+              home: LandingPage());
         }
         // Otherwise, show something whilst waiting for initialization to complete
         return CircularProgressIndicator.adaptive();
