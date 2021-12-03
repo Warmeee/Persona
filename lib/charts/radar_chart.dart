@@ -8,7 +8,7 @@ class MyRadarChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RadarChart(
-      maxValue: 10,
+      maxValue: 5,
       values: [6, 4, 6, 8, 2],
       labels: [
         "Openness",

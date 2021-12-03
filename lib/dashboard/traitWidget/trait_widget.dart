@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:multi_charts/multi_charts.dart';
-import 'package:persona_application/dashboard/trait_widget_factory.dart';
-import 'package:persona_application/dashboard/traits_description.dart';
+import 'package:persona_application/dashboard/traitWidget/trait_widget_factory.dart';
+import 'package:persona_application/dashboard/traitWidget/traits_description.dart';
 
 class TraitWidget extends StatelessWidget implements TraitWidgetFactory {
   const TraitWidget(
