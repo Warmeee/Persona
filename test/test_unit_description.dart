@@ -2,7 +2,8 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:persona_application/tests/test_description.dart';
+import 'package:persona_application/codex/testCard/test_description.dart';
+
 
 void main(){
   test("test description", ()

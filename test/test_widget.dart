@@ -1,32 +1,44 @@
-
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:persona_application/charts/bar_chart.dart';
-import 'package:persona_application/codex/codex_page.dart';
-import 'package:persona_application/dashboard/dashboard.dart';
-import 'package:persona_application/dashboard/mood_tracker.dart';
-import 'package:persona_application/dashboard/traitWidget/trait_widget_factory.dart';
-import 'package:persona_application/data/services/my_firebase_auth.dart';
-import 'package:persona_application/data/sign_in_up/sign_in.dart';
-import 'package:persona_application/data/sign_in_up/widgets/login_text_field.dart';
-import 'package:persona_application/data/sign_in_up/widgets/sign_in_widget.dart';
-import 'package:persona_application/main.dart';
-import 'package:persona_application/widgets/app_bar.dart';
+import 'package:persona_application/codex/health_card.dart';
+import 'package:persona_application/codex/health_description.dart';
 
-import 'package:persona_application/main.dart' as app;
-import 'package:persona_application/widgets/home_page.dart';
-void main(){
+void main() {
+  testWidgets("test_health_description_anxiety", (WidgetTester tester) async {
+    await tester.pumpWidget(MaterialApp(
+        home: HealthDescription(
+            title: "Anxiety", image: HealthCard.resolveImage("Anxiety"))));
+    final res = find.descendant(
+        of: find.text("Anxiety"), matching: find.byType(RichText));
+    expect(res, findsOneWidget);
+  });
 
+  testWidgets("test_health_description_depression",
+      (WidgetTester tester) async {
+    await tester.pumpWidget(MaterialApp(
+        home: HealthDescription(
+            title: "Depression",
+            image: HealthCard.resolveImage("Depression"))));
+    final res = find.descendant(
+        of: find.text("Depression"), matching: find.byType(RichText));
+    expect(res, findsOneWidget);
+  });
 
-    testWidgets("test widget", (WidgetTester tester) async {
-      await tester.pumpWidget(Codex());
+  testWidgets("test_health_description_bipolarity",
+      (WidgetTester tester) async {
+    await tester.pumpWidget(new HealthDescription(
+        title: "Bipolarity", image: HealthCard.resolveImage("Bipolarity")));
+    final res = find.descendant(
+        of: find.text("Bipolarity"), matching: find.byType(RichText));
+    expect(res, findsOneWidget);
+  });
 
-
-
-
-    });
-
-
+  testWidgets("test_health_description_empty", (WidgetTester tester) async {
+    await tester.pumpWidget(
+        new HealthDescription(title: "", image: HealthCard.resolveImage("")));
+    final res =
+        find.descendant(of: find.text(""), matching: find.byType(RichText));
+    expect(res, findsWidgets);
+  });
 }
