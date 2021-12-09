@@ -27,16 +27,16 @@ void main() {
 
   testWidgets("test_health_description_bipolarity",
           (WidgetTester tester) async {
-        await tester.pumpWidget(new HealthDescription(
-            title: "Bipolarity", image: HealthCard.resolveImage("Bipolarity")));
+        await tester.pumpWidget(MaterialApp(home:HealthDescription(
+            title: "Bipolarity", image: HealthCard.resolveImage("Bipolarity"))));
         final res = find.descendant(
             of: find.text("Bipolarity"), matching: find.byType(RichText));
         expect(res, findsOneWidget);
       });
 
   testWidgets("test_health_description_empty", (WidgetTester tester) async {
-    await tester.pumpWidget(
-        new HealthDescription(title: "", image: HealthCard.resolveImage("")));
+    await tester.pumpWidget(MaterialApp(home:
+        HealthDescription(title: "", image: HealthCard.resolveImage(""))));
     final res =
     find.descendant(of: find.text(""), matching: find.byType(RichText));
     expect(res, findsWidgets);
@@ -49,11 +49,11 @@ void main() {
 
   test("test getDescription Depression", () {
     var health = HealthDescription.getDescription("Depression");
-    expect(HealthDescription.anxiety, health);
+    expect(HealthDescription.depression, health);
   });
   test("test getDescription Bipolarity", () {
     var health = HealthDescription.getDescription("Bipolarity");
-    expect(HealthDescription.anxiety, health);
+    expect(HealthDescription.bipolarity, health);
   });
 
   test("test getDescription Other", () {
